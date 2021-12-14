@@ -1,0 +1,53 @@
+"""Test file for Day 3: Binary Diagnostic"""
+import pathlib
+import pytest
+import aoc202103 as aoc
+
+PUZZLE_DIR = pathlib.Path(__file__).parent
+
+
+@pytest.fixture(name="example_1")
+def example1():
+    """Parses example1"""
+    puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().strip()
+    return aoc.parse(puzzle_input)
+
+
+@pytest.fixture(name="example_2")
+def example2():
+    """Parses example1 to include aim"""
+    puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().strip()
+    return aoc.parse_with_aim(puzzle_input)
+
+
+def test_parse_example1(example_1):
+    """Test that input is parsed properly"""
+    assert example_1 == [
+        "00100",
+        "11110",
+        "10110",
+        "10111",
+        "10101",
+        "01111",
+        "00111",
+        "11100",
+        "10000",
+        "11001",
+        "00010",
+        "01010",
+    ]
+
+
+def test_part1_example1(example_1):
+    """Test part 1 on example input"""
+    assert aoc.part1(example_1) == 22 * 9
+
+
+def test_parse_example2(example_2):
+    """Test that input is parsed properly using window function"""
+    assert example_2 == [(5, 0), (8, 40), (2, 20)]
+
+
+def test_part2_example2(example_2):
+    """Test part 2 on example input"""
+    assert aoc.part2(example_2) == 900
