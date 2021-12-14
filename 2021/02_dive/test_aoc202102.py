@@ -6,14 +6,14 @@ import aoc202102 as aoc
 PUZZLE_DIR = pathlib.Path(__file__).parent
 
 
-@pytest.fixture
+@pytest.fixture(name="example_1")
 def example1():
     """Parses example1"""
     puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().strip()
     return aoc.parse(puzzle_input)
 
 
-@pytest.fixture
+@pytest.fixture(name="example_2")
 def example2():
     """Parses example1 to include aim"""
     puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().strip()
