@@ -1,3 +1,4 @@
+"""Test file for Day 2: Dive """
 import pathlib
 import pytest
 import aoc202102 as aoc
@@ -19,21 +20,21 @@ def example2():
     return aoc.parse_with_aim(puzzle_input)
 
 
-def test_parse_example1(example1):
+def test_parse_example1(example_1):
     """Test that input is parsed properly"""
-    assert example1 == [(5, 0), (0, 5), (8, 0), (0, -3), (0, 8), (2, 0)]
+    assert example_1 == [(5, 0), (0, 5), (8, 0), (0, -3), (0, 8), (2, 0)]
 
 
-def test_part1_example1(example1):
+def test_part1_example1(example_1):
     """Test part 1 on example input"""
-    assert aoc.part1(example1) == 150
+    assert aoc.part1(example_1) == 150
 
 
-def test_parse_example2(example2):
+def test_parse_example2(example_2):
     """Test that input is parsed properly using window function"""
-    assert example2 == [(5, 0), (8, 40), (2, 20)]
+    assert example_2 == [(5, 0), (8, 40), (2, 20)]
 
 
-def test_part2_example2(example2):
+def test_part2_example2(example_2):
     """Test part 2 on example input"""
-    assert aoc.part2(example2) == 900
+    assert aoc.part2(example_2) == 900

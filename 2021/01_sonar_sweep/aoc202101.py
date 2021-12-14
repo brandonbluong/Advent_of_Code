@@ -1,17 +1,18 @@
+"""Main file for Day 1: Sonar Sweep"""
 import pathlib
 import sys
 
 
-def parse(puzzle_input):
+def parse(puzzle_in):
     """Parse input"""
-    return [int(line) for line in puzzle_input.split("\n")]
+    return [int(line) for line in puzzle_in.split("\n")]
 
 
-def parse_window_fn(puzzle_input):
+def parse_window_fn(puzzle_in):
     """Parse input using a sliding window function"""
     parse_window = []
-    for i in range(len(puzzle_input) - 2):
-        new_num = puzzle_input[i] + puzzle_input[i + 1] + puzzle_input[i + 2]
+    for i in range(len(puzzle_in) - 2):
+        new_num = puzzle_in[i] + puzzle_in[i + 1] + puzzle_in[i + 2]
         parse_window.append(new_num)
     return parse_window
 
@@ -31,9 +32,9 @@ def part2(data):
     return part1(new_data)
 
 
-def solve(puzzle_input):
+def solve(puzzle_in):
     """Solve the puzzle for the given input"""
-    data = parse(puzzle_input)
+    data = parse(puzzle_in)
     solution1 = part1(data)
     solution2 = part2(data)
 
@@ -43,6 +44,6 @@ def solve(puzzle_input):
 if __name__ == "__main__":
     for path in sys.argv[1:]:
         print(f"{path}:")
-        puzzle_input = pathlib.Path(path).read_text().strip()
+        puzzle_input = pathlib.Path(path).read_text("utf-8").strip()
         solutions = solve(puzzle_input)
         print("\n".join(str(solution) for solution in solutions))
