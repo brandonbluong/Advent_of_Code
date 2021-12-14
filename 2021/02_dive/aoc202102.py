@@ -1,44 +1,66 @@
-with open("advent_day_2.txt") as d:
-    directions = [line.strip() for line in d]
+import pathlib
+import sys
 
 
-def part_one(puzzle_input):
-    """Returns answer to part one"""
-    horizontal_position = 0
-    depth = 0
-
-    for direction in puzzle_input:
-        letter = direction[0]
-        num = int(direction[-1])
+def parse(puzzle_input):
+    """Parse input"""
+    parsed_direction = []
+    for line in puzzle_input.split("\n"):
+        letter = line[0]
+        num = int(line[-1])
         if letter == "d":
-            depth += num
+            parsed_direction.append((0, num))  # (horizontal_position, depth)
         elif letter == "u":
-            depth -= num
+            parsed_direction.append((0, -num))
         else:
-            horizontal_position += num
-    return horizontal_position * depth
+            parsed_direction.append((num, 0))
+    return parsed_direction
 
 
-print(part_one(directions))
-
-
-def part_two(puzzle_input):
-    """Returns answer to part 2"""
-    horizontal_position = 0
-    depth = 0
+def parse_with_aim(puzzle_input):
+    """Parse input to include aim"""
     aim = 0
-
-    for direction in puzzle_input:
-        letter = direction[0]
-        num = int(direction[-1])
+    parsed_direction = []
+    for line in puzzle_input.split("\n"):
+        letter = line[0]
+        num = int(line[-1])
         if letter == "d":
             aim += num
         elif letter == "u":
             aim -= num
         else:
-            horizontal_position += num
-            depth += aim * num
+            parsed_direction.append((num, aim * num))
+    return parsed_direction
+
+
+def part1(data):
+    """Solve part 1"""
+    horizontal_position = 0
+    depth = 0
+    for direction in data:
+        horizontal_position += direction[0]
+        depth += direction[1]
     return horizontal_position * depth
 
 
-print(part_two(directions))
+def part2(data):
+    """Solve part 2"""
+    return part1(data)
+
+
+def solve(puzzle_input):
+    """Solve the puzzle for the given input"""
+    data1 = parse(puzzle_input)
+    data2 = parse_with_aim(puzzle_input)
+    solution1 = part1(data1)
+    solution2 = part2(data2)
+
+    return solution1, solution2
+
+
+if __name__ == "__main__":
+    for path in sys.argv[1:]:
+        print(f"{path}:")
+        puzzle_input = pathlib.Path(path).read_text().strip()
+        solutions = solve(puzzle_input)
+        print("\n".join(str(solution) for solution in solutions))
