@@ -18,7 +18,7 @@ def part1(food_list):
     max_cal = 0
     current_cal = 0
     for cal in food_list:
-        if cal != 0:
+        if cal:
             current_cal += cal
         else:
             if current_cal > max_cal:
@@ -27,8 +27,27 @@ def part1(food_list):
     return max_cal
 
 
-def part2(data):
+def part2(food_list):
     """Solve part 2."""
+    max_cal = [0, 0, 0]
+    current_cal = 0
+
+    def cal_compare(current_cal, max_cal):
+        max_cal.append(current_cal)
+        max_cal.sort(reverse=True)
+        max_cal.pop()
+        return max_cal
+
+    for cal in food_list:
+        if cal:
+            current_cal += cal
+        else:
+            max_cal = cal_compare(current_cal, max_cal)
+            current_cal = 0
+    if current_cal:
+        max_cal = cal_compare(current_cal, max_cal)
+
+    return max_cal[0] + max_cal[1] + max_cal[2]
 
 
 def solve(puzzle_input):

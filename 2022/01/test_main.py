@@ -13,7 +13,8 @@ def example1():
 
 @pytest.fixture
 def example2():
-    puzzle_input = (PUZZLE_DIR / "example2.txt").read_text().strip()
+    "Uses example1.txt"
+    puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().strip()
     return main.parse(puzzle_input)
 
 
@@ -44,13 +45,6 @@ def test_part1_example1(example1):
     assert main.part1(example1) == 24000
 
 
-@pytest.mark.skip(reason="Not implemented")
 def test_part2_example1(example1):
     """Test part 2 on example input."""
-    assert main.part2(example1) == ...
-
-
-@pytest.mark.skip(reason="Not implemented")
-def test_part2_example2(example2):
-    """Test part 2 on example input."""
-    assert main.part2(example2) == ...
+    assert main.part2(example1) == 45000
