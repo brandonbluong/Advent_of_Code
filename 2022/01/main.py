@@ -18,12 +18,12 @@ def part1(food_list):
     max_cal = 0
     current_cal = 0
     for cal in food_list:
-        if cal:
+        if cal != 0:
             current_cal += cal
         else:
             if current_cal > max_cal:
                 max_cal = current_cal
-                current_cal = 0
+            current_cal = 0
     return max_cal
 
 
