@@ -3,14 +3,25 @@
 import pathlib
 import sys
 
+
 def parse(puzzle_input):
     """Parse input."""
+    parsed_input = [line for line in puzzle_input.split("\n")]
+    for i, num in enumerate(parsed_input):
+        if num == "":
+            parsed_input[i] = 0
+        else:
+            parsed_input[i] = int(num)
+    return parsed_input
+
 
 def part1(data):
     """Solve part 1."""
 
+
 def part2(data):
     """Solve part 2."""
+
 
 def solve(puzzle_input):
     """Solve the puzzle for the given input."""
@@ -19,6 +30,7 @@ def solve(puzzle_input):
     solution2 = part2(data)
 
     return solution1, solution2
+
 
 if __name__ == "__main__":
     for path in sys.argv[1:]:
