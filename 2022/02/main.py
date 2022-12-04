@@ -4,7 +4,17 @@ import sys
 
 def parse(puzzle_input):
     """Parse input."""
-    [[line] for line in puzzle_input.strip("\n")]
+    parsed = []
+    row = []
+    for char in puzzle_input:
+        if char.isalpha():
+            row.append(char)
+        elif char == "\n":
+            parsed.append(row)
+            row = []
+    if row:
+        parsed.append(row)
+    return parsed
 
 
 def part1(data):
