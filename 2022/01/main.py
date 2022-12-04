@@ -1,5 +1,3 @@
-# aoc201901.py
-
 import pathlib
 import sys
 
@@ -15,8 +13,18 @@ def parse(puzzle_input):
     return parsed_input
 
 
-def part1(data):
+def part1(food_list):
     """Solve part 1."""
+    max_cal = 0
+    current_cal = 0
+    for cal in food_list:
+        if cal:
+            current_cal += cal
+        else:
+            if current_cal > max_cal:
+                max_cal = current_cal
+                current_cal = 0
+    return max_cal
 
 
 def part2(data):
