@@ -17,8 +17,36 @@ def parse(puzzle_input):
     return parsed
 
 
-def part1(data):
-    """Solve part 1."""
+def part1(strat_guide):
+    """Solve part 1.
+
+    Rock = (A, X), Paper = (B, Y), Scissor = (C, Z)
+    """
+
+    def calculate_score(round):
+        score_shape = {"X": 1, "Y": 2, "Z": 3}
+        score_outcome = {
+            # TODO can't have list as a dict key
+            # Rock outcomes
+            ["C", "X"]: 6,
+            ["A", "X"]: 3,
+            ["B", "X"]: 0,
+            # Paper outcomes
+            ["A", "Y"]: 6,
+            ["B", "Y"]: 3,
+            ["C", "Y"]: 0,
+            # Scissor outcomes
+            ["B", "Z"]: 6,
+            ["C", "Z"]: 3,
+            ["A", "Z"]: 0,
+        }
+        return score_shape[round[1]] + score_outcome[round]
+
+    total_score = 0
+    for round in strat_guide:
+        total_score += calculate_score(round)
+
+    return total_score
 
 
 def part2(data):

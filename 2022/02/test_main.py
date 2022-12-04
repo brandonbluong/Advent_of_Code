@@ -21,10 +21,10 @@ def example2():
 # @pytest.mark.skip(reason="Not implemented")
 def test_parse_example1(example1):
     """Test that input is parsed properly."""
-    assert example1 == [["A", "Y"], ["B", "X"], ["C", "Z"]]
+    assert example1 == [("A", "Y"), ("B", "X"), ("C", "Z")]
 
 
-@pytest.mark.skip(reason="Not implemented")
+# @pytest.mark.skip(reason="Not implemented")
 def test_part1_example1(example1):
     """Test part 1 on example input."""
     assert main.part1(example1) == 15
