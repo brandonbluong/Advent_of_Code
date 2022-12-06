@@ -77,8 +77,8 @@ def part2(strat_guide):
         hand_outcomes = outcomes[round[1]]
         for combo in hand_outcomes:
             if round[0] == combo[0]:
-                true_round = f"{round[1]}{combo[1]}"
-
+                true_round = f"{round[0]}{combo[1]}"
+                break
         return score_shape[true_round[1]] + score_outcome[true_round]
 
     total_score = 0
