@@ -21,7 +21,7 @@ def example2():
 # @pytest.mark.skip(reason="Not implemented")
 def test_parse_example1(example1):
     """Test that input is parsed properly."""
-    assert example1 == [("A", "Y"), ("B", "X"), ("C", "Z")]
+    assert example1 == ["AY", "BX", "CZ"]
 
 
 # @pytest.mark.skip(reason="Not implemented")

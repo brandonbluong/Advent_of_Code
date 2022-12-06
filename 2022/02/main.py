@@ -4,17 +4,16 @@ import sys
 
 def parse(puzzle_input):
     """Parse input."""
-    parsed = []
-    row = []
-    for char in puzzle_input:
+    strat_guide = []
+    round = ""
+    for char in puzzle_input.strip("\n"):
         if char.isalpha():
-            row.append(char)
-        elif char == "\n":
-            parsed.append(row)
-            row = []
-    if row:
-        parsed.append(row)
-    return parsed
+            round += char
+        if len(round) == 2:
+            strat_guide.append(round)
+            round = ""
+
+    return strat_guide
 
 
 def part1(strat_guide):
@@ -26,19 +25,18 @@ def part1(strat_guide):
     def calculate_score(round):
         score_shape = {"X": 1, "Y": 2, "Z": 3}
         score_outcome = {
-            # TODO can't have list as a dict key
             # Rock outcomes
-            ["C", "X"]: 6,
-            ["A", "X"]: 3,
-            ["B", "X"]: 0,
+            "CX": 6,
+            "AX": 3,
+            "BX": 0,
             # Paper outcomes
-            ["A", "Y"]: 6,
-            ["B", "Y"]: 3,
-            ["C", "Y"]: 0,
-            # Scissor outcomes
-            ["B", "Z"]: 6,
-            ["C", "Z"]: 3,
-            ["A", "Z"]: 0,
+            "AY": 6,
+            "BY": 3,
+            "CY": 0,
+            # Scisor outcomes
+            "BZ": 6,
+            "CZ": 3,
+            "AZ": 0,
         }
         return score_shape[round[1]] + score_outcome[round]
 
