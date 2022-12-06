@@ -47,8 +47,45 @@ def part1(strat_guide):
     return total_score
 
 
-def part2(data):
-    """Solve part 2."""
+def part2(strat_guide):
+    """Solve part 2.
+
+    X = lose (0), Y = draw (3), Z = win (6)
+    """
+
+    def calculate_score2(round):
+        outcomes = {
+            "X": ("BX", "CY", "AZ"),
+            "Y": ("AX", "BY", "CZ"),
+            "Z": ("CX", "AY", "BZ"),
+        }
+        score_shape = {"X": 1, "Y": 2, "Z": 3}  # Rock, Paper, Scissor
+        score_outcome = {
+            # Rock outcomes
+            "CX": 6,
+            "AX": 3,
+            "BX": 0,
+            # Paper outcomes
+            "AY": 6,
+            "BY": 3,
+            "CY": 0,
+            # Scissor outcomes
+            "BZ": 6,
+            "CZ": 3,
+            "AZ": 0,
+        }
+        hand_outcomes = outcomes[round[1]]
+        for combo in hand_outcomes:
+            if round[0] == combo[0]:
+                true_round = f"{round[1]}{combo[1]}"
+
+        return score_shape[true_round[1]] + score_outcome[true_round]
+
+    total_score = 0
+    for round in strat_guide:
+        total_score += calculate_score2(round)
+
+    return total_score
 
 
 def solve(puzzle_input):
