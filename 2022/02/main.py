@@ -23,7 +23,7 @@ def part1(strat_guide):
     """
 
     def calculate_score(round):
-        score_shape = {"X": 1, "Y": 2, "Z": 3}
+        score_shape = {"X": 1, "Y": 2, "Z": 3}  # Rock, Paper, Scissor
         score_outcome = {
             # Rock outcomes
             "CX": 6,
@@ -33,7 +33,7 @@ def part1(strat_guide):
             "AY": 6,
             "BY": 3,
             "CY": 0,
-            # Scisor outcomes
+            # Scissor outcomes
             "BZ": 6,
             "CZ": 3,
             "AZ": 0,
