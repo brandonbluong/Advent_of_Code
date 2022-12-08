@@ -8,7 +8,8 @@ def parse(puzzle_input):
     for line in puzzle_input.split("\n"):
         parsed_pair = []
         for pair in line.split(","):
-            parsed_pair.append((int(pair[0]), int(pair[2])))
+            parsed_range = [int(num) for num in pair.split("-")]
+            parsed_pair.append(parsed_range)
         parsed.append(parsed_pair)
 
     return parsed
