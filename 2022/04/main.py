@@ -4,7 +4,14 @@ import sys
 
 def parse(puzzle_input):
     """Parse input."""
-    return ...  # [line for line in puzzle_input.split("\n")]
+    parsed = []
+    for line in puzzle_input.split("\n"):
+        parsed_pair = []
+        for pair in line.split(","):
+            parsed_pair.append((int(pair[0]), int(pair[2])))
+        parsed.append(parsed_pair)
+
+    return parsed
 
 
 def part1(data):
