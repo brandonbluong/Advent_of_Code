@@ -15,7 +15,31 @@ def parse(puzzle_input):
 
 
 def part1(data):
-    """Solve part 1."""
+    """Solve part 1.
+
+    For each pair, one section has to be of smaller or equal length to be fully contained.
+
+    (1): Find the smaller section
+    (2): Smaller section's first number must be >= the other's first number
+    (3): Smaller section's second number must be <= other's second number.
+    """
+
+    def find_smaller_section(pair):
+        if len(range(pair[0][0], pair[0][1])) <= len(range(pair[1][0], pair[1][1])):
+            return pair[0], pair[1]  # left is smaller
+        return pair[1], pair[0]  # right is smaller
+
+    def compare_nums(small, big):
+        if small[0] >= big[0] and small[1] <= big[1]:
+            return "fully contained"
+
+    num_pairs = 0
+    for pair in data:
+        small, big = find_smaller_section(pair)
+        if compare_nums(small, big):
+            num_pairs += 1
+
+    return num_pairs
 
 
 def part2(data):
