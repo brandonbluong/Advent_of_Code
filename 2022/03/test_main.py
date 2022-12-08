@@ -18,6 +18,7 @@ def example2():
     return main.parse(puzzle_input)
 
 
+# @pytest.mark.skip(reason="Not implemented")
 def test_parse_example1(example1):
     """Test that input is parsed properly."""
     assert example1 == [
@@ -30,10 +31,10 @@ def test_parse_example1(example1):
     ]
 
 
-@pytest.mark.skip(reason="Not implemented")
+# @pytest.mark.skip(reason="Not implemented")
 def test_part1_example1(example1):
     """Test part 1 on example input."""
-    assert main.part1(example1) == ...
+    assert main.part1(example1) == 157
 
 
 @pytest.mark.skip(reason="Not implemented")

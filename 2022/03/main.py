@@ -9,7 +9,23 @@ def parse(puzzle_input):
 
 def part1(data):
     """Solve part 1."""
-    ...
+    from string import ascii_letters
+
+    item_priority_sum = 0
+    item_priority = dict(zip(ascii_letters, range(1, 53)))
+
+    for line in data:
+        compartment = set()
+        # add first half letters to compartment
+        for part_1 in line[: len(line) // 2]:
+            compartment.add(part_1)
+        # compare second half letters to compartment
+        for part_2 in line[len(line) // 2 :]:
+            if part_2 in compartment:
+                item_priority_sum += item_priority[part_2]
+                break
+
+    return item_priority_sum
 
 
 def part2(data):
