@@ -29,8 +29,26 @@ def part1(data):
 
 
 def part2(data):
-    """Solve part 2."""
-    ...
+    """Solve part 2.
+
+    Each group is 3 lines. Create sets for each line within each group. Find the intersection and sum its priority score."""
+    from string import ascii_letters
+
+    item_priority = dict(zip(ascii_letters, range(1, 53)))
+    item_priority_sum = 0
+    group = []
+
+    for rucksack in data:
+        unique_item = set()
+        for item in rucksack:
+            unique_item.add(item)
+        group.append(unique_item)
+        if len(group) == 3:
+            badge = group[0].intersection(group[1], group[2]).pop()
+            item_priority_sum += item_priority[badge]
+            group = []
+
+    return item_priority_sum
 
 
 def solve(puzzle_input):
