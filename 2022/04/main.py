@@ -44,7 +44,31 @@ def part1(data):
 
 
 def part2(data):
-    """Solve part 2."""
+    """Solve part 2. Count the number of overlaps.
+
+    A pair has an overlap if the smaller range:
+    (1) big_left <= small_left <= big_right
+    OR
+    (2) big_left <= small_right <= big_right
+    """
+
+    def find_smaller_section(pair):
+        if len(range(pair[0][0], pair[0][1])) <= len(range(pair[1][0], pair[1][1])):
+            return pair[0], pair[1]  # left is smaller
+        return pair[1], pair[0]  # right is smaller
+
+    def check_big_range(small, big):
+        if (big[0] <= small[0] <= big[1]) or (big[0] <= small[1] <= big[1]):
+            return True
+
+    num_overlaps = 0
+
+    for pair in data:
+        small, big = find_smaller_section(pair)
+        if check_big_range(small, big):
+            num_overlaps += 1
+
+    return num_overlaps
 
 
 def solve(puzzle_input):
