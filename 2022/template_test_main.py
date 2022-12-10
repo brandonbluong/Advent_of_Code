@@ -14,23 +14,16 @@ def example():
 # @pytest.mark.skip(reason="Not implemented")
 def test_parse_example(example):
     """Test that input is parsed properly."""
-    assert example == [
-        [[2, 4], [6, 8]],
-        [[2, 3], [4, 5]],
-        [[5, 7], [7, 9]],
-        [[2, 8], [3, 7]],
-        [[6, 6], [4, 6]],
-        [[2, 6], [4, 8]],
-    ]
+    assert example == ...
 
 
 # @pytest.mark.skip(reason="Not implemented")
 def test_part1_example(example):
     """Test part 1 on example input."""
-    assert main.part1(example) == 2
+    assert main.part1(example) == ...
 
 
 # @pytest.mark.skip(reason="Not implemented")
 def test_part2_example(example):
     """Test part 2 on example input."""
-    assert main.part2(example) == 4
+    assert main.part2(example) == ...
