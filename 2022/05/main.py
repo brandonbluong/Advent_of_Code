@@ -1,5 +1,6 @@
 import pathlib
 import sys
+import copy
 
 
 def parse(puzzle_input):
@@ -39,13 +40,15 @@ def part1(data):
 
         return crate_stack
 
-    example_crates, input_crates, move_set = data[0], data[1], data[2]
+    data1 = copy.deepcopy(data)
+    example_crates, input_crates, move_set = data1[0], data1[1], data1[2]
 
     if len(move_set) == 4:
         final_config = rearrange(example_crates, move_set)
     else:
         final_config = rearrange(input_crates, move_set)
 
+    print(final_config)
     top_crates = ""
 
     for stack in final_config:
@@ -57,32 +60,25 @@ def part1(data):
 def part2(data):
     """Solve part 2."""
 
-    import copy
-
     def rearrange(crate_stack, move_set):
 
-        print(crate_stack)
-
-        for i, move in enumerate(move_set):
+        for move in move_set:
             move_nums, move_from, move_to = move[0], move[1] - 1, move[2] - 1
 
             # create new list of last num of crates
-            picked_crates = copy.deepcopy(crate_stack[move_from][-move_nums:])
+            picked_crates = crate_stack[move_from][-move_nums:]
 
             # remove the picked_crates from from_crates
             for _ in range(move_nums):
                 crate_stack[move_from].pop()
-                if crate_stack[move_from] == []:
-                    pass
 
             # add picked_crates to the move_to pile
             crate_stack[move_to].extend(picked_crates)
 
         return crate_stack
 
-    example_crates, input_crates, move_set = data[0], data[1], data[2]
-
-    print(len(input_crates))
+    data2 = copy.deepcopy(data)
+    example_crates, input_crates, move_set = data2[0], data2[1], data2[2]
 
     if len(move_set) <= 4:
         final_config = rearrange(example_crates, move_set)
