@@ -30,14 +30,15 @@ def test_parse_example(example):
         list("NSHBPF"),
     )
 
-    move_set = [(1, 2, 1), (3, 1, 3), (2, 2, 1), (1, 1, 2)]
+    move_set = [[1, 2, 1], [3, 1, 3], [2, 2, 1], [1, 1, 2]]
+
     assert example == (example_crates, input_crates, move_set)
 
 
-@pytest.mark.skip(reason="Not implemented")
+# @pytest.mark.skip(reason="Not implemented")
 def test_part1_example(example):
     """Test part 1 on example input."""
-    assert main.part1(example) == ...
+    assert main.part1(example) == "CMZ"
 
 
 @pytest.mark.skip(reason="Not implemented")

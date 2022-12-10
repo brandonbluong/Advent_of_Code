@@ -22,7 +22,7 @@ def parse(puzzle_input):
     for line in puzzle_input.split("\n"):
         if line and line[0] == "m":
             directions = line.split(" ")
-            move = (int(directions[1]), int(directions[3]), int(directions[5]))
+            move = [int(directions[1]), int(directions[3]), int(directions[5])]
             move_set.append(move)
 
     return (example_crates, input_crates, move_set)
@@ -30,7 +30,28 @@ def parse(puzzle_input):
 
 def part1(data):
     """Solve part 1."""
-    return ...
+
+    def rearrange(crate_stack, move_set):
+        for move in move_set:
+            for step in range(move[0]):
+                crate = crate_stack[move[1] - 1].pop()
+                crate_stack[move[2] - 1].append(crate)
+
+        return crate_stack
+
+    example_crates, input_crates, move_set = data[0], data[1], data[2]
+
+    if len(move_set) == 4:
+        final_config = rearrange(example_crates, move_set)
+    else:
+        final_config = rearrange(input_crates, move_set)
+
+    top_crates = ""
+
+    for stack in final_config:
+        top_crates += stack[-1]
+
+    return top_crates
 
 
 def part2(data):
