@@ -5,6 +5,19 @@ import sys
 def parse(puzzle_input):
     """Parse input."""
     example_crates = list("ZN"), list("MCD"), list("P")
+
+    input_crates = (
+        list("BGSC"),
+        list("TMWHJNVG"),
+        list("MQS"),
+        list("BSLTWNM"),
+        list("JZFTVGWP"),
+        list("CTBGQHS"),
+        list("TJPBW"),
+        list("GDCZFTQM"),
+        list("NSHBPF"),
+    )
+
     move_set = []
     for line in puzzle_input.split("\n"):
         if line and line[0] == "m":
@@ -12,7 +25,7 @@ def parse(puzzle_input):
             move = (int(directions[1]), int(directions[3]), int(directions[5]))
             move_set.append(move)
 
-    return (example_crates, move_set)
+    return (example_crates, input_crates, move_set)
 
 
 def part1(data):

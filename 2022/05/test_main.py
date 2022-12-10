@@ -16,9 +16,22 @@ def example():
 def test_parse_example(example):
     """Test that input is parsed properly."""
 
-    example_crates = ["Z", "N"], ["M", "C", "D"], ["P"]
+    example_crates = list("ZN"), list("MCD"), list("P")
+
+    input_crates = (
+        list("BGSC"),
+        list("TMWHJNVG"),
+        list("MQS"),
+        list("BSLTWNM"),
+        list("JZFTVGWP"),
+        list("CTBGQHS"),
+        list("TJPBW"),
+        list("GDCZFTQM"),
+        list("NSHBPF"),
+    )
+
     move_set = [(1, 2, 1), (3, 1, 3), (2, 2, 1), (1, 1, 2)]
-    assert example == (example_crates, move_set)
+    assert example == (example_crates, input_crates, move_set)
 
 
 @pytest.mark.skip(reason="Not implemented")
