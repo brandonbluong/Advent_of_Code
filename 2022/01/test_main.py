@@ -11,11 +11,11 @@ def example():
     return main.parse(puzzle_input)
 
 
-def test_parse_example1(example1):
+def test_parse_example(example):
     """Test that input is parsed properly.
 
     A blank line is represented with a 0. No food should be listed with 0 calories."""
-    assert example1 == [
+    assert example == [
         1000,
         2000,
         3000,
@@ -33,11 +33,11 @@ def test_parse_example1(example1):
     ]
 
 
-def test_part1_example1(example1):
+def test_part1_example(example):
     """Test part 1 on example input."""
-    assert main.part1(example1) == 24000
+    assert main.part1(example) == 24000
 
 
-def test_part2_example1(example1):
+def test_part2_example(example):
     """Test part 2 on example input."""
-    assert main.part2(example1) == 45000
+    assert main.part2(example) == 45000
