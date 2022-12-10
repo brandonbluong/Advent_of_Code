@@ -6,15 +6,8 @@ PUZZLE_DIR = pathlib.Path(__file__).parent
 
 
 @pytest.fixture
-def example1():
-    puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().strip()
-    return main.parse(puzzle_input)
-
-
-@pytest.fixture
-def example2():
-    "Uses example1.txt"
-    puzzle_input = (PUZZLE_DIR / "example1.txt").read_text().strip()
+def example():
+    puzzle_input = (PUZZLE_DIR / "example.txt").read_text().strip()
     return main.parse(puzzle_input)
 
 

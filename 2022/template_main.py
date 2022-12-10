@@ -4,9 +4,13 @@
 
 # def parse(puzzle_input):
 #     """Parse input."""
+<<<<<<< HEAD
 #     # [int(line) for line in puzzle_input.split("\n")]
 
 #     return ...
+=======
+#     return  # [int(line) for line in puzzle_input.split("\n")]
+>>>>>>> origin/main
 
 
 # def part1(data):
