@@ -1,17 +1,18 @@
 import pathlib
 import sys
-from collections import deque
 
 
 def parse(puzzle_input):
     """Parse input."""
+    example_crates = list("ZN"), list("MCD"), list("P")
+    move_set = []
     for line in puzzle_input.split("\n"):
-        print(line)
-    # [int(line) for line in puzzle_input.split("\n")]
-    stack_1 = deque("ZN")
-    stack_2 = deque("MCD")
-    stack_3 = deque("PZ")
-    return stack_1, stack_2, stack_3
+        if line and line[0] == "m":
+            directions = line.split(" ")
+            move = (int(directions[1]), int(directions[3]), int(directions[5]))
+            move_set.append(move)
+
+    return (example_crates, move_set)
 
 
 def part1(data):

@@ -15,7 +15,10 @@ def example():
 # @pytest.mark.skip(reason="Not implemented")
 def test_parse_example(example):
     """Test that input is parsed properly."""
-    assert example == (deque("ZN"), deque("MCD"), deque("P"))
+
+    example_crates = ["Z", "N"], ["M", "C", "D"], ["P"]
+    move_set = [(1, 2, 1), (3, 1, 3), (2, 2, 1), (1, 1, 2)]
+    assert example == (example_crates, move_set)
 
 
 @pytest.mark.skip(reason="Not implemented")
