@@ -1,12 +1,17 @@
 import pathlib
 import sys
+from collections import deque
 
 
 def parse(puzzle_input):
     """Parse input."""
+    for line in puzzle_input.split("\n"):
+        print(line)
     # [int(line) for line in puzzle_input.split("\n")]
-
-    return ...
+    stack_1 = deque("ZN")
+    stack_2 = deque("MCD")
+    stack_3 = deque("PZ")
+    return stack_1, stack_2, stack_3
 
 
 def part1(data):

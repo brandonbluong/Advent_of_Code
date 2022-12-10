@@ -1,6 +1,7 @@
 import pathlib
 import pytest
 import main
+from collections import deque
 
 PUZZLE_DIR = pathlib.Path(__file__).parent
 
@@ -11,10 +12,10 @@ def example():
     return main.parse(puzzle_input)
 
 
-@pytest.mark.skip(reason="Not implemented")
+# @pytest.mark.skip(reason="Not implemented")
 def test_parse_example(example):
     """Test that input is parsed properly."""
-    assert example == ...
+    assert example == (deque("ZN"), deque("MCD"), deque("P"))
 
 
 @pytest.mark.skip(reason="Not implemented")
