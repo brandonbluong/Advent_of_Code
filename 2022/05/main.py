@@ -56,7 +56,45 @@ def part1(data):
 
 def part2(data):
     """Solve part 2."""
-    return ...
+
+    import copy
+
+    def rearrange(crate_stack, move_set):
+
+        print(crate_stack)
+
+        for i, move in enumerate(move_set):
+            move_nums, move_from, move_to = move[0], move[1] - 1, move[2] - 1
+
+            # create new list of last num of crates
+            picked_crates = copy.deepcopy(crate_stack[move_from][-move_nums:])
+
+            # remove the picked_crates from from_crates
+            for _ in range(move_nums):
+                crate_stack[move_from].pop()
+                if crate_stack[move_from] == []:
+                    pass
+
+            # add picked_crates to the move_to pile
+            crate_stack[move_to].extend(picked_crates)
+
+        return crate_stack
+
+    example_crates, input_crates, move_set = data[0], data[1], data[2]
+
+    print(len(input_crates))
+
+    if len(move_set) <= 4:
+        final_config = rearrange(example_crates, move_set)
+    else:
+        final_config = rearrange(input_crates, move_set)
+
+    top_crates = ""
+
+    for stack in final_config:
+        top_crates += stack[-1]
+
+    return top_crates
 
 
 def solve(puzzle_input):

@@ -41,7 +41,7 @@ def test_part1_example(example):
     assert main.part1(example) == "CMZ"
 
 
-@pytest.mark.skip(reason="Not implemented")
+# @pytest.mark.skip(reason="Not implemented")
 def test_part2_example(example):
     """Test part 2 on example input."""
-    assert main.part2(example) == ...
+    assert main.part2(example) == "MCD"
