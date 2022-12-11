@@ -48,7 +48,6 @@ def part1(data):
     else:
         final_config = rearrange(input_crates, move_set)
 
-    print(final_config)
     top_crates = ""
 
     for stack in final_config:
