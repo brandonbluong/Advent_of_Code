@@ -26,7 +26,18 @@ def part1(data):
 
 def part2(data):
     """Solve part 2."""
-    return ...
+    first_marker_index = []
+
+    for signal in data:
+        first_marker = 14
+        while first_marker < len(signal):
+            subroutine = signal[first_marker - 14 : first_marker]
+            if len(set(subroutine)) == 14:
+                first_marker_index.append(first_marker)
+                break
+            first_marker += 1
+
+    return first_marker_index
 
 
 def solve(puzzle_input):
