@@ -4,12 +4,24 @@ import sys
 
 def parse(puzzle_input):
     """Parse input."""
-    return  # [int(line) for line in puzzle_input.split("\n")]
+    return [line for line in puzzle_input.split("\n")]
 
 
 def part1(data):
-    """Solve part 1."""
-    return ...
+    """Solve part 1. Calculate each subroutine and return if unique."""
+
+    first_marker_index = []
+
+    for signal in data:
+        first_marker = 4
+        while first_marker < len(signal):
+            subroutine = signal[first_marker - 4 : first_marker]
+            if len(set(subroutine)) == 4:
+                first_marker_index.append(first_marker)
+                break
+            first_marker += 1
+
+    return first_marker_index
 
 
 def part2(data):
